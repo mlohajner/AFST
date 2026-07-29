@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=AFST
+Exec=/home/marek/Programs/afst/sync-gui
+Comment=Analitic File Sync Tool
+Terminal=false
+PrefersNonDefaultGPU=false
+Icon=file-search
+Type=Application
