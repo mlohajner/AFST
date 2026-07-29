@@ -6,13 +6,14 @@
 
 ## Philosophy
 
-Most sync tools think file by file — check one, compare, decide, copy, repeat
-multiple-thousand times. AFST thinks differently.
+Most sync tools think file by file: check one, compare, decide, copy, repeat
+multiple-thousand times.  
+AFST thinks differently.
 
 Instead of walking through directory trees hunting for differences one at a
 time, AFST first takes a **snapshot** of the source and destination state.
 Then, instead of custom comparison logic, it reaches for a tool that already
-does this better than anything else — the standard Unix `diff`. The result is
+does this better than anything else - the standard Unix `diff`. The result is
 a fast, clear analysis of what changed, turned directly into a list of files
 to transfer.
 
@@ -22,16 +23,16 @@ No magic. Just old, proven tools used in a smarter way.
 
 ## What makes it different
 
-- **Snapshot, not scanning** — the entire tree is read once, not file by
+- **Snapshot, not scanning** -the entire tree is read once, not file by
   file. Scales gracefully even on large directories.
-- **`diff` as the decision engine** — instead of hand-written comparison
+- **`diff` as the decision engine** -instead of hand-written comparison
   logic, it relies on a generic, battle-tested, fast Unix tool.
-- **Cumulative and archival** — the sync is intentionally one-directional.
+- **Cumulative and archival** -the sync is intentionally one-directional.
   Nothing gets deleted, nothing gets lost. The destination grows and
   preserves history, it never shrinks to mirror the source.
-- **Snapshots as a byproduct** — after every sync, a trace of that moment's
+- **Snapshots as a byproduct** -after every sync, a trace of that moment's
   state remains. Free insight into the past, with no extra code.
-- **Simplicity as a feature, not a compromise** — a few dozen lines of
+- **Simplicity as a feature, not a compromise** -a few dozen lines of
   bash, no dependencies, no configuration, no hidden behavior.
 
 ---
@@ -50,12 +51,12 @@ transfers only what needs to move.
 ## Spirit of the project
 
 AFST doesn't try to be rsync, doesn't try to be Time Machine, doesn't try
-to do everything. It does one thing — figure out what changed and copy it —
+to do everything. It does one thing: figure out what changed and copy it
 and does it in a way that's easy to read, easy to understand, and easy to
 trust.
 
-Sometimes the smartest solution isn't reinventing the wheel, it's pointing
-the old wheel in the right direction.
+**Sometimes the smartest solution isn't reinventing the wheel, it's pointing
+the old wheel in the right direction.**
 
 ---
 
