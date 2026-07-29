@@ -44,7 +44,7 @@ afst.sh SOURCE_DIR DEST_DIR
 ```
 
 That's it. The tool builds the snapshots, computes the differences, and
-transfers only what needs to move.
+transfers only what needs to copy.
 
 ---
 
