@@ -6,8 +6,8 @@
 
 ## Philosophy
 
-Most sync tools think file by file — check one, compare, decide, copy, repeat  
-a thousand times. AFST thinks differently.
+Most sync tools think file by file — check one, compare, decide, copy, repeat
+multiple-thousand times. AFST thinks differently.
 
 Instead of walking through directory trees hunting for differences one at a
 time, AFST first takes a **snapshot** of the source and destination state.
