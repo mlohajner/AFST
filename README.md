@@ -50,7 +50,7 @@ transfers only what needs to move.
 ## Spirit of the project
 
 AFST doesn't try to be rsync, doesn't try to be Time Machine, doesn't try
-to do everything. It does one thing — figure out what changed and move it —
+to do everything. It does one thing — figure out what changed and copy it —
 and does it in a way that's easy to read, easy to understand, and easy to
 trust.
 
