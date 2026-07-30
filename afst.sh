@@ -3,10 +3,11 @@ set -euo pipefail
 
 # --- config ---
 WORKDIR="/tmp"
-SNAP_SRC="$WORKDIR/snapshot_src.txt"
-SNAP_DST="$WORKDIR/snapshot_dst.txt"
-DIFF="$WORKDIR/snapshot.diff"
-FILES="$WORKDIR/files_to_sync.txt"
+TS=$(date +%Y-%m-%dT%H-%M-%S)
+SNAP_SRC="$WORKDIR/snapshot_src_${TS}.txt"
+SNAP_DST="$WORKDIR/snapshot_dst_${TS}.txt"
+DIFF="$WORKDIR/snapshot_${TS}.diff"
+FILES="$WORKDIR/files_to_sync_${TS}.txt"
 
 # --- checks ---
 if [ $# -ne 2 ] || [ "$1" == "" ] || [ "$2" == "" ]; then
@@ -40,7 +41,7 @@ printf "Creating source snapshot...\n"
 snapshot "$SRC" > "$SNAP_SRC"
 printf "Creating destination snapshot...\n"
 snapshot "$DST" > "$SNAP_DST"
-echo "Comparing snapshots...\n"
+printf "Comparing snapshots...\n"
 diff "$SNAP_SRC" "$SNAP_DST" > "$DIFF" || true
 
 # --- dif analytics ---
