@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=AFST
-Exec=/home/marek/Programs/afst/sync-gui
+Exec=~/.local/bin/afst-gui.sh
 Comment=Analitic File Sync Tool
 Terminal=false
 PrefersNonDefaultGPU=false
