@@ -51,7 +51,7 @@ transfers only what needs to copy.
 ## GUI
 
 For those who'd rather point and click than type, `afst-gui` wraps AFST in a
-minimal <a href="https://en.wikipedia.org/wiki/Zenity" target="_blank">Zenity</a> front end:  
+minimal <a href="https://en.wikipedia.org/wiki/Zenity" target="_blank" rel="noopener noreferrer">Zenity</a> front end:  
 pick a source folder, pick a destination folder, confirm, and watch it run.
 No new logic, no reimplementation — just a thin, honest layer on top of the
 same core script.
