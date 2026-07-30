@@ -57,7 +57,7 @@ No new logic, no reimplementation — just a thin, honest layer on top of the
 same core script.
 
 ```
-./sync-gui
+./afst-gui.sh
 ```
 
 A `.desktop` launcher is included as well, so the GUI can sit right next to
