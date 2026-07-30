@@ -48,6 +48,23 @@ transfers only what needs to copy.
 
 ---
 
+## GUI
+
+For those who'd rather point and click than type, `sync-gui` wraps AFST in a
+minimal [Zenity](https://help.gnome.org/users/zenity/stable/) front end:
+pick a source folder, pick a destination folder, confirm, and watch it run.
+No new logic, no reimplementation — just a thin, honest layer on top of the
+same core script.
+
+```
+./sync-gui
+```
+
+A `.desktop` launcher is included as well, so the GUI can sit right next to
+your other applications if you'd rather not touch a terminal at all.
+
+---
+
 ## Spirit of the project
 
 AFST doesn't try to be rsync, doesn't try to be Time Machine, doesn't try
