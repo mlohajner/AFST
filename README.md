@@ -1,6 +1,6 @@
 # AFST — Analytic File Sync Tool
 
-**Sync without the noise. Only what changed, nothing more.**
+**Sync/Archive without the noise. Only what changed, nothing more.**
 
 ---
 
