@@ -29,11 +29,9 @@ In the original AFST, if either SOURCE or DEST lives behind a network mount (gvf
 
 ### What this requires
 
-For the speed-up to kick in, **AFST2 must also be installed on the remote side**, reachable via SSH, and callable as:  
-`afst --snapshot-only <path>`.
+For the speed-up to kick in, **AFST2 must also be installed on the remote side**, reachable via SSH.
 
-**This is the key difference from original:**  
-AFST2 is no longer purely a local tool that happens to read remote mounts.  
+**AFST2 is no longer purely a local tool that happens to read remote mounts.**  
 It's designed to run as a peer on both ends of the sync.
 For this you need to add AFST on remote end:
 1) link afst2.sh as "afst" in your $PATH on the remote
@@ -41,23 +39,22 @@ For this you need to add AFST on remote end:
 
 ### How it works
 
-1. AFST2 detects that SOURCE and/or DEST resolves through a gvfs mount (sftp, smb, or nfs) and figures out the real user@host and remote path (or SMB share name) behind it.
+1. AFST2 detects that either SOURCE or DEST resolves through a gvfs mount (sftp, smb, or nfs) and figures out the real user@host and remote path (or SMB share name) behind it.
 2. As a "handshake" it initiates: `ssh user@host "afst --snapshot-only <path-or-share>"`.
 3. **If that handshake works**, the remote side snapshots itself - locally, natively, no network filesystem overhead,
    **at the same time**, the local side is independently snapshotting whichever end stays local.
    Both snapshots run **asynchronously, in parallel**.
 4. AFST2 waits for both snapshots to complete.
 5. From this point on, diff, file selection, copy **everything is identical to the original AFST.**
-   The twist is entirely contained in phase 1-4; nothing downstream changes.
 
-The result: maximum snapshot speed, minimum network traffic -remote does it's part of the work.  
-(a single small snapshot listing travels the wire instead of a `find`-over-the-network), and no behavioral surprises once syncing actually starts.
+The result:  
+Maximum snapshot speed, minimum network traffic -remote does it's part of the work.  
+(a single snapshot listing travels the wire instead of a `find`-over-the-network), and no behavioral surprises once syncing actually starts.
 
 ### The fallback (this is the part that makes it safe)
 
 The handshake is deliberately unforgiving in one direction:  
 **if it doesn't cleanly succeed, AFST2 doesn't try to be clever about it.**
-
 If, for any reason:
 - the other side isn't reachable over SSH,
 - AFST2 isn't installed there,
@@ -65,9 +62,8 @@ If, for any reason:
 - the path or SMB share can't be resolved on the remote's own end,
 - or anything else goes sideways
 
-**AFST2 falls back to the standard snapshot method**: a local `find` walking the network mount, exactly as original AFST always did. Nothing breaks, nothing hangs waiting on something that isn't going to answer. You lose the speed-up for that run, not the sync.
-
-This fallback is evaluated **per side, independently.** SOURCE and DEST are judged separately - one can succeed via the "fast path" while the other falls back, and the sync still completes correctly either way.  
+This fallback is evaluated **per side, independently.**  
+SOURCE and DEST are judged separately - one can succeed via the "fast path" while the other falls back, and the sync still completes correctly either way.  
 This also means AFST2 works unmodified even when invoked from a third machine where *both* SOURCE and DEST are remote to it.
 
 ### In short
