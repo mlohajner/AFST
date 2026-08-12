@@ -91,7 +91,7 @@ fi
 
 # --- checks ---
 if [ $# -ne 2 ] || [ "$1" == "" ] || [ "$2" == "" ]; then
-	printf " \ AFST \  Analytic File Sync Tool V1\n"
+	printf " \ AFST2 \  Analytic File Sync Tool 2\n"
 	printf "            😃 by Mario Lohajner 2025-2026\n"
 	printf "\n"
 	printf "Usage: %s SOURCE_DIR DEST_DIR\n\n" "$0"
