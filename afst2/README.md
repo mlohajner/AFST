@@ -46,7 +46,7 @@ For this you need to add AFST on remote end:
 5. From this point on, diff, file selection, copy **everything is identical to the original AFST.**
 
 The result:  
-Maximum snapshot speed, minimum network traffic -remote "pulls it's weight".  
+Maximum snapshot speed, minimum network traffic -remote end "pulls it's weight".  
 (a single snapshot listing travels the wire instead of a `find`-over-the-network), and no behavioral surprises once syncing actually starts.
 
 ### The fallback (this is the part that makes it safe)
@@ -60,8 +60,7 @@ If, for any reason:
 - the path or SMB share can't be resolved on the remote's own end,
 - or anything else goes sideways
 
-This fallback is evaluated **per side, independently.**  
-SOURCE and DEST are judged separately - one can succeed via the "fast path" while the other falls back, and the sync still completes correctly.  
+This fallback is evaluated for both SOURCE and DESTINATION - one can succeed via the "fast path" while the other falls back, and the sync still completes correctly.  
 This also means AFST2 works unmodified even when invoked from a third machine where *both* SOURCE and DEST are remote to it.
 
 ### In short
