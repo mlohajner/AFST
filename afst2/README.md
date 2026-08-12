@@ -4,21 +4,7 @@ The **2** denotes the two-sided/cooperative architecture:
 While AFST operates single-sided, AFST2 allows both ends to participate in the operation.  
 Otherwise, AFST2 is the same tool, with the same usage and philosophy as the original AFST.
 
-## Usage
-
-```
-afst SOURCE_DIR DEST_DIR
-```
-
-That's it. Same as original AFST: point it at a source and a destination, it snapshots both, diffs them, and copies over whatever's new or changed in SOURCE. No flags to learn, no config files required to get started.
-
-## Philosophy (unchanged)
-
-- **mtime-based, one-way sync.** A file is queued for copying if it's missing or different (by modification time) on the DEST side. Nothing on DEST is ever deleted or overwritten in the other direction. This is by design, not an oversight.
-- **Snapshot → diff → copy.** Three dumb, transparent, inspectable steps. No magic, no daemon, no persistent state beyond the snapshot files it leaves behind in `/tmp`.
-- **Fails loud, does nothing clever behind your back.** If something's wrong, AFST2 tells you and stops, rather than guessing.
-
-If you've used AFST before, you already know how to use AFST2. The mental model hasn't changed.
+## Usage and Phylosophy remain the same as in [AFST](../README.md)
 
 ## The Key difference
 ### Remote-aware snapshotting & offload
