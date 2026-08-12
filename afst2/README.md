@@ -32,27 +32,31 @@ In the original AFST, if either SOURCE or DEST lives behind a network mount (gvf
 For the speed-up to kick in, **AFST2 must also be installed on the remote side**, reachable via SSH, and callable as:  
 `afst --snapshot-only <path>`.
 
-This is the key difference from original:  
+**This is the key difference from original:**  
 AFST2 is no longer purely a local tool that happens to read remote mounts.  
 It's designed to run as a peer on both ends of the sync.
+For this you need to add AFST on remote end:
+1) link afst2.sh as "afst" in your $PATH on the remote
+2) configure SSH key autentifiacion for your remote end
 
 ### How it works
 
 1. AFST2 detects that SOURCE and/or DEST resolves through a gvfs mount (sftp, smb, or nfs) and figures out the real user@host and remote path (or SMB share name) behind it.
-2. It attempts "a handshake": `ssh user@host "afst --snapshot-only <path-or-share>"`.
-3. **If that handshake works**, the remote side snapshots itself — locally, natively, no network filesystem overhead,
+2. As a "handshake" it initiates: `ssh user@host "afst --snapshot-only <path-or-share>"`.
+3. **If that handshake works**, the remote side snapshots itself - locally, natively, no network filesystem overhead,
    **at the same time**, the local side is independently snapshotting whichever end stays local.
    Both snapshots run **asynchronously, in parallel**.
-4. AFST2 waits for both snapshots to complete, then collects them.
+4. AFST2 waits for both snapshots to complete.
 5. From this point on, diff, file selection, copy **everything is identical to the original AFST.**
    The twist is entirely contained in phase 1-4; nothing downstream changes.
 
-The result: maximum snapshot speed, minimum network traffic.  
+The result: maximum snapshot speed, minimum network traffic -remote does it's part of the work.  
 (a single small snapshot listing travels the wire instead of a `find`-over-the-network), and no behavioral surprises once syncing actually starts.
 
 ### The fallback (this is the part that makes it safe)
 
-The handshake is deliberately unforgiving in one direction: **if it doesn't cleanly succeed, AFST2 doesn't try to be clever about it.**
+The handshake is deliberately unforgiving in one direction:  
+**if it doesn't cleanly succeed, AFST2 doesn't try to be clever about it.**
 
 If, for any reason:
 - the other side isn't reachable over SSH,
