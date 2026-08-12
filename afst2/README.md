@@ -4,7 +4,7 @@ The **2** denotes the two-sided/cooperative architecture:
 While AFST operates single-sided, AFST2 allows both ends to participate in the operation.  
 Otherwise, AFST2 is the same tool, with the same usage and philosophy as the original AFST.
 
-## Usage and Phylosophy remain the same as in [AFST](../README.md)
+## Usage and Philosophy remain the same as in [AFST](../README.md)
 
 ## The Key difference
 ### Remote-aware snapshotting & offload
@@ -32,7 +32,7 @@ For this you need to add AFST on remote end:
 5. From this point on, diff, file selection, copy **everything is identical to the original AFST.**
 
 The result:  
-Maximum snapshot speed, minimum network traffic -remote end "pulls it's weight".  
+Maximum snapshot speed, minimum network traffic -remote end "pulls its weight".  
 (a single snapshot listing travels the wire instead of a `find`-over-the-network), and no behavioral surprises once syncing actually starts.
 
 ### The fallback (this is the part that makes it safe)
