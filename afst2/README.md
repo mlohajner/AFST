@@ -1,8 +1,8 @@
 # AFST2 - Analytic File Sync Tool 2 (NOT version 2)
 
-AFST2 is the same tool, same usage, same philosophy as the original AFST **with significant twist.**  
-The 2 denotes the two-sided/cooperative architecture:  
-AFST operates single-sided, while AFST2 can have both endpoints participate in the operation.
+The **2** denotes the two-sided/cooperative architecture:  
+While AFST operates single-sided, AFST2 allows both ends to participate in the operation.
+Otherwise, AFST2 is the same tool, with the same usage and philosophy as the original AFST.
 
 ## Usage
 
