@@ -5,7 +5,7 @@ AFST2 is the same tool, same usage, same philosophy as the original AFST **with 
 ## Usage
 
 ```
-afst2 SOURCE_DIR DEST_DIR
+afst SOURCE_DIR DEST_DIR
 ```
 
 That's it. Same as original AFST: point it at a source and a destination, it snapshots both, diffs them, and copies over whatever's new or changed in SOURCE. No flags to learn, no config files required to get started.
