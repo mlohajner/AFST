@@ -61,7 +61,7 @@ If, for any reason:
 - or anything else goes sideways
 
 This fallback is evaluated for both SOURCE and DESTINATION - one can succeed via the "fast path" while the other falls back, and the sync still completes correctly.  
-This also means AFST2 works unmodified even when invoked from a third machine where *both* SOURCE and DEST are remote to it.
+This also means AFST2 works even when invoked from a third machine where *both* SOURCE and DEST are remote to it.
 
 ### In short
 
