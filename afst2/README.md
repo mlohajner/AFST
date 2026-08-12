@@ -1,6 +1,6 @@
 # AFST2 — Analytic File Sync Tool v2
 
-AFST2 is the same tool, same usage, same philosophy as the original AFST **one significant twist.**
+AFST2 is the same tool, same usage, same philosophy as the original AFST **with one significant twist.**
 
 ## Usage
 
