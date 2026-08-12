@@ -21,19 +21,17 @@ If you've used AFST before, you already know how to use AFST2. The mental model 
 ## The Key difference
 ### Remote-aware snapshotting & offload
 
-In the original AFST, if either SOURCE or DEST lives behind a network mount (gvfs/sftp/smb/nfs), the snapshot phase has to walk that entire directory tree **through the mount**. On large trees this can be slow: the remote machine could just do that work locally, on its own filesystem, in a fraction of the time.
-
-**AFST2 fixes this — but only if you let it.**
+In the original AFST, if either SOURCE or DEST lives behind a network mount (gvfs/sftp/smb/nfs), the snapshot phase has to walk that entire directory tree **through the mount**. On large trees this can be slow: the remote machine could just do that work locally, on its own filesystem, in a fraction of the time. **AFST2 fixes this - but only if you let it.**
 
 ### What this requires
 
 For the speed-up to kick in, **AFST2 must also be installed on the remote side** and reachable via SSH.
 
-**AFST2 is no longer purely a local tool that happens to read remote mounts.**  
-It's designed to run as a peer on both ends of the sync.
+**AFST2 is no longer strictly a local tool that reads remote mounts.**  
+It's redesigned to run as a peer on both ends of the sync.
 For this you need to add AFST on remote end:
 1) link afst2.sh as "afst" in your $PATH on the remote
-2) configure SSH key autentifiacion for your remote end
+2) configure SSH key authentification for your remote end
 
 ### How it works
 
@@ -73,5 +71,5 @@ This also means AFST2 works unmodified even when invoked from a third machine wh
 | Snapshot timing | sequential | source and destination snapshot **in parallel** whenever both are being taken |
 | Diff / copy / everything else | - | **unchanged** |
 
-If you never install AFST2 on the remote side, or the handshake never succeeds, AFST2 *is* original AFST.  
+If you never install AFST2 on the remote side, or the handshake never succeeds, **AFST2 is original AFST**.  
 The upgrade is opt-in by nature, you don't have to configure anything to keep it safe, only to make it even faster and more efficient.
