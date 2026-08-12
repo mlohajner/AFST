@@ -79,4 +79,5 @@ This also means AFST2 works unmodified even when invoked from a third machine wh
 | Snapshot timing | sequential | source and destination snapshot **in parallel** whenever both are being taken |
 | Diff / copy / everything else | - | **unchanged** |
 
-If you never install AFST2 on the remote side, or the handshake never succeeds, AFST2 *is* original AFST. The upgrade is opt-in by nature, you don't have to configure anything to keep it safe, only to make it even faster and more efficient.
+If you never install AFST2 on the remote side, or the handshake never succeeds, AFST2 *is* original AFST.  
+The upgrade is opt-in by nature, you don't have to configure anything to keep it safe, only to make it even faster and more efficient.
