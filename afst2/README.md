@@ -1,4 +1,4 @@
-# AFST2 — Analytic File Sync Tool v2
+# AFST2 - Analytic File Sync Tool 2
 
 AFST2 is the same tool, same usage, same philosophy as the original AFST **with one significant twist.**
 
@@ -19,9 +19,7 @@ That's it. Same as original AFST: point it at a source and a destination, it sna
 If you've used AFST before, you already know how to use AFST2. The mental model hasn't changed.
 
 ## The Key difference
-### Remote-Aware Snapshotting / offloading
-
-Here's what's actually new.
+### Remote-aware snapshotting & offload
 
 In the original AFST, if either SOURCE or DEST lives behind a network mount (gvfs/sftp/smb/nfs), the snapshot phase has to walk that entire directory tree **through the mount**. On large trees this can be slow: the remote machine could just do that work locally, on its own filesystem, in a fraction of the time.
 
@@ -63,12 +61,12 @@ If, for any reason:
 - or anything else goes sideways
 
 This fallback is evaluated **per side, independently.**  
-SOURCE and DEST are judged separately - one can succeed via the "fast path" while the other falls back, and the sync still completes correctly either way.  
+SOURCE and DEST are judged separately - one can succeed via the "fast path" while the other falls back, and the sync still completes correctly.  
 This also means AFST2 works unmodified even when invoked from a third machine where *both* SOURCE and DEST are remote to it.
 
 ### In short
 
-| | AFST (v1) | AFST2 |
+| | AFST | AFST2 |
 |---|---|---|
 | Local ↔ Local | `find` locally | same |
 | Local ↔ Remote (mount) | `find` over the mount | `find` runs *on the remote*, via SSH handshake - falls back to original behavior if the handshake fails |
