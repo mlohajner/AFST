@@ -1,6 +1,6 @@
 # AFST2 - Analytic File Sync Tool 2
 
-AFST2 is the same tool, same usage, same philosophy as the original AFST **with one significant twist.**
+AFST2 is the same tool, same usage, same philosophy as the original AFST **with significant twist.**
 
 ## Usage
 
@@ -27,7 +27,7 @@ In the original AFST, if either SOURCE or DEST lives behind a network mount (gvf
 
 ### What this requires
 
-For the speed-up to kick in, **AFST2 must also be installed on the remote side**, reachable via SSH.
+For the speed-up to kick in, **AFST2 must also be installed on the remote side** and reachable via SSH.
 
 **AFST2 is no longer purely a local tool that happens to read remote mounts.**  
 It's designed to run as a peer on both ends of the sync.
@@ -42,11 +42,11 @@ For this you need to add AFST on remote end:
 3. **If that handshake works**, the remote side snapshots itself - locally, natively, no network filesystem overhead,
    **at the same time**, the local side is independently snapshotting whichever end stays local.
    Both snapshots run **asynchronously, in parallel**.
-4. AFST2 waits for both snapshots to complete.
+4. AFST2 waits for both snapshots to complete and gather data.
 5. From this point on, diff, file selection, copy **everything is identical to the original AFST.**
 
 The result:  
-Maximum snapshot speed, minimum network traffic -remote does it's part of the work.  
+Maximum snapshot speed, minimum network traffic -remote "pulls it's weight".  
 (a single snapshot listing travels the wire instead of a `find`-over-the-network), and no behavioral surprises once syncing actually starts.
 
 ### The fallback (this is the part that makes it safe)
