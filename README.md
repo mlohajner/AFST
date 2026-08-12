@@ -1,4 +1,4 @@
-# AFST — Analytic File Sync Tool
+# AFST — Analytic File Sync Tool & AFST2
 
 **Sync/Archive without the noise. Only what changed, nothing more.**
 
