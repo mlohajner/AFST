@@ -36,7 +36,7 @@ Maximum snapshot speed, minimum network traffic -remote end "pulls its weight".
 ### The fallback (this is the part that makes it safe)
 
 The handshake is deliberately unforgiving in one direction:  
-**if it doesn't cleanly succeed, AFST2 doesn't try to be clever about it.**
+**if it doesn't cleanly succeed, AFST2 doesn't try to be clever about it.**  
 If, for any reason:
 - the other side isn't reachable over SSH,
 - AFST2 isn't installed there,
