@@ -31,8 +31,8 @@ For this you need to add AFST on remote end:
 
 ### The result:  
 Maximum snapshot speed, minimum network traffic -remote end "pulls its weight".  
-(a single snapshot listing travels the wire instead of a `find`-over-the-network), and no behavioral surprises once syncing actually starts.
-In effect, this results in distributed execution, with the remote end, naturally, taking care of the remote snapshot in parallel.
+(a single snapshot listing travels the wire instead of a `find`-over-the-network), and no behavioral surprises once syncing actually starts.  
+In effect, this is distributed execution, with the remote end, naturally, taking care of the remote snapshot in parallel.
 
 ### The fallback (this is the part that makes it safe)
 
