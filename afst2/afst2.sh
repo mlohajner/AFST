@@ -194,7 +194,7 @@ fi
 # Tries executing "afst --snapshot-only ARG" on the remote side in the background.
 # stdout -> snapshot file, stderr -> error file (used to detect failed handshake,
 # e.g. Windows box with no afst / no matching ssh command -> nonzero exit fast).
-# tree metadata is highly compressible so we use -C for network traffic reduction up to 10x
+# tree metadata is highly compressible so we use -C for up to 10x network traffic reduction
 #
 # IMPORTANT: sets the PID via the global RS_PID, does NOT echo/return it.
 # If this were called as `PID=$(start_remote_snapshot ...)`, the `&` job
