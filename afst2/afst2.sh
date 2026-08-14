@@ -92,7 +92,7 @@ fi
 # --- checks ---
 if [ $# -ne 2 ] || [ "$1" == "" ] || [ "$2" == "" ]; then
 	printf " \ AFST2 \  Analytic File Sync Tool 2\n"
-	printf "            😃 by Mario Lohajner 2026\n"
+	printf "            😃 by Mario Lohajner 2025-2026\n"
 	printf "\n"
 	printf "Usage: %s SOURCE_DIR DEST_DIR\n\n" "$0"
 	exit 1
@@ -194,6 +194,7 @@ fi
 # Tries executing "afst --snapshot-only ARG" on the remote side in the background.
 # stdout -> snapshot file, stderr -> error file (used to detect failed handshake,
 # e.g. Windows box with no afst / no matching ssh command -> nonzero exit fast).
+# tree metadata is highly compressible so we use -C for network traffic reduction up to 10x
 #
 # IMPORTANT: sets the PID via the global RS_PID, does NOT echo/return it.
 # If this were called as `PID=$(start_remote_snapshot ...)`, the `&` job
@@ -202,7 +203,7 @@ fi
 # shell would then fail with "pid X is not a child of this shell".
 start_remote_snapshot() {
 	local host="$1" arg="$2" outfile="$3" errfile="$4"
-	ssh -o BatchMode=yes -o ConnectTimeout=5 "$host" "afst --snapshot-only '$arg'" \
+	ssh -C -o BatchMode=yes -o ConnectTimeout=5 "$host" "afst --snapshot-only '$arg'" \
 		> "$outfile" 2> "$errfile" &
 	RS_PID=$!
 }
